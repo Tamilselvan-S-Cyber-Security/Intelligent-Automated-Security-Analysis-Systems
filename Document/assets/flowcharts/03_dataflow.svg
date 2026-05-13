@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <style>
+      .box{fill:#fff;stroke:#111827;stroke-width:2;rx:12;}
+      .t{font:700 22px Arial, sans-serif;fill:#111827;}
+      .s{font:16px Arial, sans-serif;fill:#111827;}
+      .small{font:14px Arial, sans-serif;fill:#374151;}
+      .a{stroke:#111827;stroke-width:2;fill:none;marker-end:url(#m);} 
+    </style>
+    <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#111827" />
+    </marker>
+  </defs>
+
+  <text x="40" y="50" class="t">CyberWolfScanner - Data Flow Diagram</text>
+
+  <rect x="80" y="110" width="300" height="90" class="box"/>
+  <text x="105" y="150" class="s">User / UI</text>
+  <text x="105" y="176" class="small">url, options, api_key</text>
+
+  <rect x="460" y="110" width="300" height="90" class="box"/>
+  <text x="485" y="150" class="s">Validator</text>
+  <text x="485" y="176" class="small">validate_url(url)</text>
+
+  <rect x="840" y="110" width="300" height="90" class="box"/>
+  <text x="865" y="150" class="s">Scanner Coordinator</text>
+  <text x="865" y="176" class="small">VulnerabilityScanner</text>
+
+  <rect x="120" y="300" width="380" height="140" class="box"/>
+  <text x="145" y="340" class="s">Scanning Modules</text>
+  <text x="145" y="368" class="small">xss, sqli, ports, paths, ssl, ...</text>
+  <text x="145" y="394" class="small">concurrent execution</text>
+
+  <rect x="560" y="300" width="260" height="140" class="box"/>
+  <text x="585" y="340" class="s">AI Analyzer</text>
+  <text x="585" y="368" class="small">WolfAPI (optional)</text>
+
+  <rect x="880" y="300" width="260" height="140" class="box"/>
+  <text x="905" y="340" class="s">Aggregator</text>
+  <text x="905" y="368" class="small">summary + risk</text>
+
+  <rect x="310" y="520" width="320" height="110" class="box"/>
+  <text x="335" y="560" class="s">Report Generator</text>
+  <text x="335" y="588" class="small">HTML + charts</text>
+
+  <rect x="720" y="520" width="320" height="110" class="box"/>
+  <text x="745" y="560" class="s">Output</text>
+  <text x="745" y="588" class="small">display + export</text>
+
+  <path d="M380 155 L460 155" class="a"/>
+  <path d="M760 155 L840 155" class="a"/>
+  <path d="M980 200 L320 300" class="a"/>
+  <path d="M980 200 L690 300" class="a"/>
+  <path d="M500 370 L880 370" class="a"/>
+  <path d="M820 370 L880 370" class="a"/>
+  <path d="M1010 440 L470 520" class="a"/>
+  <path d="M630 575 L720 575" class="a"/>
+</svg>

@@ -1,0 +1,249 @@
+/* Custom styles for CyberWolf */
+
+/* ASCII art styles */
+.ascii-art {
+    font-family: monospace;
+    white-space: pre;
+    line-height: 1.2;
+    color: var(--bs-primary);
+}
+
+/* Timeline styles */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin-left: 0.5rem;
+}
+
+.timeline-item {
+    position: relative;
+}
+
+.timeline-item:before {
+    content: "";
+    position: absolute;
+    left: -2rem;
+    top: 0.5rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--bs-primary);
+}
+
+.timeline-item:after {
+    content: "";
+    position: absolute;
+    left: -1.65rem;
+    top: 1rem;
+    width: 2px;
+    height: 100%;
+    background-color: var(--bs-primary);
+    opacity: 0.3;
+}
+
+.timeline-item:last-child:after {
+    display: none;
+}
+
+/* Card shadow enhancement */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Feature icon styles */
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--bs-light);
+    background-color: var(--bs-primary);
+    border-radius: 50%;
+}
+
+/* Button hover enhancement */
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Code block styling */
+pre code {
+    display: block;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    border-radius: 0.25rem;
+    white-space: pre-wrap;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bs-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bs-primary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-primary-dark);
+}
+
+/* Sticky footer */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Animation for alerts */
+.alert {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scanner loading animation */
+.scanning-animation {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 1rem auto;
+}
+
+.scanning-animation div {
+    position: absolute;
+    border: 4px solid var(--bs-primary);
+    opacity: 1;
+    border-radius: 50%;
+    animation: scanning-animation 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.scanning-animation div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+@keyframes scanning-animation {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}
+
+/* Custom styles for the results page */
+.scan-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.results-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.vulnerability-card {
+    margin-bottom: 15px;
+    border-left: 4px solid;
+}
+
+.vulnerability-card.high {
+    border-left-color: #dc3545;
+}
+
+.vulnerability-card.medium {
+    border-left-color: #ffc107;
+}
+
+.vulnerability-card.low {
+    border-left-color: #28a745;
+}
+
+.api-key-table {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+}
+
+.vulnerability-details {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--bs-dark);
+    border-radius: 0.25rem;
+}
+
+/* Help page styles */
+.sticky-top {
+    top: 1rem;
+}
+
+/* Custom styles for mobile */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 1.5rem;
+    }
+    
+    .timeline-item:before {
+        left: -1.5rem;
+    }
+    
+    .timeline-item:after {
+        left: -1.15rem;
+    }
+}

@@ -1,0 +1,81 @@
+{
+    "endpoints": {
+        "/api/scan": {
+            "method": "POST",
+            "description": "Perform vulnerability scan on target URL",
+            "parameters": {
+                "url": {
+                    "type": "string",
+                    "required": true,
+                    "description": "Target URL to scan"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "required": false,
+                    "default": 10,
+                    "description": "Request timeout in seconds"
+                },
+                "api_key": {
+                    "type": "string",
+                    "required": false,
+                    "description": "API key for enhanced scanning"
+                },
+                "attack_options": {
+                    "type": "object",
+                    "required": false,
+                    "description": "Custom attack options"
+                }
+            },
+            "response": {
+                "200": {
+                    "description": "Successful scan",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "results": {
+                                        "type": "object",
+                                        "description": "Scan results"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Bad request",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "error": {
+                                        "type": "string",
+                                        "description": "Error message"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "500": {
+                    "description": "Server error",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "error": {
+                                        "type": "string",
+                                        "description": "Error message"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

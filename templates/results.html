@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+{% block title %}Scan Results{% endblock %}
+
+{% block content %}
+<!-- Loading Indicator -->
+<div id="loadingIndicator" class="text-center" style="display: none;">
+    <div class="spinner-border text-primary mb-3" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <h4>Scanning in progress...</h4>
+    <div class="progress mb-3">
+        <div id="scanProgress" class="progress-bar progress-bar-striped progress-bar-animated" 
+             role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <p class="text-muted">This may take a few minutes. Please do not close this window.</p>
+</div>
+
+<!-- Results Container -->
+<div id="resultsContainer" class="results-container">
+    <h2 class="mb-4">Scan Results</h2>
+    
+    {% if error_message %}
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Error Occurred!</h4>
+        <p>{{ error_message }}</p>
+        <hr>
+        <p class="mb-0">Please try running the scan again or contact support if the issue persists.</p>
+    </div>
+    {% endif %}
+
+    {% if target_url and current_time %}
+    <div class="mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Scan Information</h4>
+                <p class="card-text">
+                    <strong>Target:</strong> {{ target_url }}<br>
+                    <strong>Completed at:</strong> <span id="scanTime">{{ current_time }}</span><br>
+                    {% if scan_duration %}
+                    <strong>Duration:</strong> {{ scan_duration }} seconds
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if results and results.summary %}
+    <div class="mb-4">
+        <h3>Summary</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Total vulnerabilities:</strong> {{ results.summary.total }}</p>
+                        <p><strong>Risk Level:</strong> 
+                            <span class="badge {% if results.summary.risk_level == 'High' %}bg-danger
+                                         {% elif results.summary.risk_level == 'Medium' %}bg-warning
+                                         {% else %}bg-success{% endif %}">
+                                {{ results.summary.risk_level }}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-sm btn-outline-secondary me-2" onclick="printResults()">
+                                <i class="fas fa-print"></i> Print
+                            </button>
+                            <a href="{{ url_for('download_report') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-download"></i> Download Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if results.xss %}
+    <div class="mb-4">
+        <h3>Cross-Site Scripting (XSS) Vulnerabilities</h3>
+        <div class="vulnerability-section">
+            {% for vuln in results.xss %}
+            <div class="card vulnerability-card high mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">{{ vuln.location }}</h5>
+                    <span class="badge bg-danger">High Risk</span>
+                </div>
+                <div class="card-body">
+                    <div class="vulnerability-details">
+                        <p><strong>Method:</strong> {{ vuln.method }}</p>
+                        <p><strong>Parameter:</strong> {{ vuln.param }}</p>
+                        <p><strong>Payload:</strong> <code class="bg-light p-1">{{ vuln.payload }}</code></p>
+                        <p><strong>URL:</strong> <a href="{{ vuln.url }}" target="_blank">{{ vuln.url }}</a></p>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-sm btn-outline-info" onclick="showRemediation('xss-{{ loop.index }}')">
+                            Show Remediation Steps
+                        </button>
+                        <div id="xss-{{ loop.index }}" class="remediation-steps mt-2" style="display: none;">
+                            <h6>Recommended Fix:</h6>
+                            <ul>
+                                <li>Implement proper input validation</li>
+                                <li>Use HTML encoding for dynamic content</li>
+                                <li>Apply Content Security Policy (CSP)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if results.sqli %}
+    <div class="mb-4">
+        <h3>SQL Injection Vulnerabilities</h3>
+        <div class="vulnerability-section">
+            {% for vuln in results.sqli %}
+            <div class="card vulnerability-card high mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">{{ vuln.location }}</h5>
+                    <span class="badge bg-danger">High Risk</span>
+                </div>
+                <div class="card-body">
+                    <div class="vulnerability-details">
+                        <p><strong>Method:</strong> {{ vuln.method }}</p>
+                        <p><strong>Parameter:</strong> {{ vuln.param }}</p>
+                        <p><strong>Type:</strong> {{ vuln.error_type }}</p>
+                        <p><strong>URL:</strong> <a href="{{ vuln.url }}" target="_blank">{{ vuln.url }}</a></p>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-sm btn-outline-info" onclick="showRemediation('sqli-{{ loop.index }}')">
+                            Show Remediation Steps
+                        </button>
+                        <div id="sqli-{{ loop.index }}" class="remediation-steps mt-2" style="display: none;">
+                            <h6>Recommended Fix:</h6>
+                            <ul>
+                                <li>Use parameterized queries</li>
+                                <li>Implement input validation</li>
+                                <li>Apply proper escaping</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">No Results Available</h4>
+        <p>No scan results are currently available. This could be because:</p>
+        <ul>
+            <li>The scan is still in progress</li>
+            <li>No vulnerabilities were found</li>
+            <li>An error occurred during the scan</li>
+        </ul>
+    </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('scan') }}" class="btn btn-primary">
+            <i class="fas fa-search"></i> New Scan
+        </a>
+        {% if results %}
+        <a href="{{ url_for('download_report') }}" class="btn btn-success ms-2">
+            <i class="fas fa-file-download"></i> Download Report
+        </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if scan is in progress
+    let hasResults = {% if results and results.summary %}true{% else %}false{% endif %};
+    
+    if (!hasResults) {
+        document.getElementById('loadingIndicator').style.display = 'block';
+        document.getElementById('resultsContainer').style.display = 'none';
+        
+        let progress = 0;
+        let progressBar = document.getElementById('scanProgress');
+        
+        const progressInterval = setInterval(function() {
+            if (progress < 95) {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+                progressBar.setAttribute('aria-valuenow', progress);
+            }
+        }, 1000);
+        
+        // Auto-refresh every 5 seconds
+        setTimeout(function() {
+            location.reload();
+        }, 5000);
+    }
+    // Clear interval when results are loaded
+    if (hasResults) {
+        clearInterval(progressInterval);
+    }
+});
+
+function showRemediation(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.style.display = element.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+function printResults() {
+    window.print();
+}
+
+// Add copy URL functionality
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('URL copied to clipboard!');
+    }).catch(function(err) {
+        console.error('Failed to copy text: ', err);
+    });
+}
+
+// Add export functionality
+function exportResults(format) {
+    const formats = {
+        'pdf': '{{ url_for("download_report", format="pdf") }}',
+        'csv': '{{ url_for("download_report", format="csv") }}',
+        'json': '{{ url_for("download_report", format="json") }}'
+    };
+    
+    if (formats[format]) {
+        window.location.href = formats[format];
+    }
+}
+</script>
+{% endblock %}

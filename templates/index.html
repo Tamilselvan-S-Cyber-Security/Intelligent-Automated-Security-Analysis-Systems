@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="row align-items-center py-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold text-primary mb-3">Intelligent Security Analysis System</h1>
+            <h2 class="h3 mb-4">An Intelligent Automated Security Analysis System for Applications, Websites, and Files</h2>
+            <p class="lead mb-4">
+                Protect your web applications, websites, and files with our comprehensive automated security analysis system.
+                Detect XSS, SQL Injection, open ports, vulnerable paths, and file vulnerabilities in minutes.
+            </p>
+            <div class="d-grid gap-2 d-md-flex">
+                <a href="{{ url_for('scan') }}" class="btn btn-primary btn-lg px-4 me-md-2">Start Scanning</a>
+                <a href="{{ url_for('help_page') }}" class="btn btn-outline-secondary btn-lg px-4">Learn More</a>
+            </div>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-center mt-5 mt-lg-0">
+            <div class="ascii-art text-primary">
+<pre>
+                    ,     ,
+                    |\---/|
+                   /       \
+                  |         |
+                   \       /
+                    ||   ||
+                    ||   ||
+                    '---'
+</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row g-4 py-5">
+        <h2 class="text-center mb-4">Key Features</h2>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 card-title mb-3">XSS Detection</h3>
+                    <p class="card-text">
+                        Identify Cross-Site Scripting vulnerabilities that could allow attackers to inject malicious scripts.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 card-title mb-3">SQL Injection Scanner</h3>
+                    <p class="card-text">
+                        Detect SQL Injection vulnerabilities that could allow unauthorized database access.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 card-title mb-3">Port Scanner</h3>
+                    <p class="card-text">
+                        Identify open ports and services that might expose your system to attacks.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 card-title mb-3">Path Traversal Detection</h3>
+                    <p class="card-text">
+                        Find vulnerable paths and directories that could expose sensitive files.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 card-title mb-3">Detailed Reporting</h3>
+                    <p class="card-text">
+                        Get comprehensive reports with vulnerability details and remediation recommendations.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 card-title mb-3">API Enhanced Scanning</h3>
+                    <p class="card-text">
+                        Utilize advanced API features for deeper and more comprehensive vulnerability detection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row py-5 text-center">
+        <div class="col-lg-8 mx-auto">
+            <h2>Ready to secure your web application?</h2>
+            <p class="lead mb-4">
+                Start scanning now and identify security vulnerabilities before attackers do.
+            </p>
+            <a href="{{ url_for('scan') }}" class="btn btn-primary btn-lg px-5">Start Scanning</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

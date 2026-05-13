@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <style>
+      .box{fill:#fff;stroke:#111827;stroke-width:2;rx:12;}
+      .t{font:700 22px Arial, sans-serif;fill:#111827;}
+      .s{font:16px Arial, sans-serif;fill:#111827;}
+      .small{font:14px Arial, sans-serif;fill:#374151;}
+      .a{stroke:#111827;stroke-width:2;fill:none;marker-end:url(#m);} 
+    </style>
+    <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#111827" />
+    </marker>
+  </defs>
+
+  <text x="40" y="50" class="t">CyberWolfScanner - Report Generation Flow</text>
+
+  <rect x="90" y="120" width="320" height="80" class="box"/>
+  <text x="115" y="166" class="s">Input: Scan Results</text>
+
+  <rect x="470" y="120" width="320" height="80" class="box"/>
+  <text x="495" y="156" class="s">Process Issues</text>
+  <text x="495" y="182" class="small">flatten + categorize</text>
+
+  <rect x="850" y="120" width="320" height="80" class="box"/>
+  <text x="875" y="156" class="s">Compute Security Score</text>
+
+  <rect x="90" y="290" width="320" height="90" class="box"/>
+  <text x="115" y="330" class="s">Generate Charts</text>
+  <text x="115" y="356" class="small">Plotly / Matplotlib</text>
+
+  <rect x="470" y="290" width="320" height="90" class="box"/>
+  <text x="495" y="330" class="s">Watermark</text>
+  <text x="495" y="356" class="small">PIL image (optional)</text>
+
+  <rect x="850" y="290" width="320" height="90" class="box"/>
+  <text x="875" y="330" class="s">Render HTML Template</text>
+  <text x="875" y="356" class="small">Jinja2 template</text>
+
+  <rect x="470" y="460" width="320" height="90" class="box"/>
+  <text x="495" y="500" class="s">Output: HTML Report</text>
+  <text x="495" y="526" class="small">download / print to PDF</text>
+
+  <path d="M410 160 L470 160" class="a"/>
+  <path d="M790 160 L850 160" class="a"/>
+  <path d="M250 200 L250 290" class="a"/>
+  <path d="M630 200 L630 290" class="a"/>
+  <path d="M1010 200 L1010 290" class="a"/>
+  <path d="M1010 380 L630 460" class="a"/>
+</svg>

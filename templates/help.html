@@ -1,0 +1,427 @@
+{% extends 'base.html' %}
+
+{% block title %}CyberWolf - Help & Documentation{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">CyberWolf Scanner Help & Documentation</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead">
+                        CyberWolf is an advanced vulnerability scanner designed to help you identify security weaknesses in web applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-lg-3">
+            <div class="list-group shadow-sm sticky-top pt-4" style="top: 2rem;">
+                <a href="#getting-started" class="list-group-item list-group-item-action">Getting Started</a>
+                <a href="#scan-types" class="list-group-item list-group-item-action">Scan Types</a>
+                <a href="#vulnerability-types" class="list-group-item list-group-item-action">Vulnerability Types</a>
+                <a href="#interpreting-results" class="list-group-item list-group-item-action">Interpreting Results</a>
+                <a href="#api-scanning" class="list-group-item list-group-item-action">API Enhanced Scanning</a>
+                <a href="#cli-usage" class="list-group-item list-group-item-action">CLI Usage</a>
+                <a href="#faq" class="list-group-item list-group-item-action">FAQ</a>
+            </div>
+        </div>
+        
+        <div class="col-lg-9">
+            <!-- Getting Started Section -->
+            <div id="getting-started" class="card shadow-sm mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h3 class="h5 mb-0">Getting Started</h3>
+                </div>
+                <div class="card-body">
+                    <p>To start using CyberWolf to scan for vulnerabilities, follow these simple steps:</p>
+                    
+                    <ol class="mb-4">
+                        <li class="mb-2">Navigate to the <a href="{{ url_for('scan') }}">Scanner</a> page.</li>
+                        <li class="mb-2">Enter the target URL you wish to scan (e.g., <code>https://example.com</code>).</li>
+                        <li class="mb-2">Choose the scan type (Basic or API Enhanced).</li>
+                        <li class="mb-2">Click the "Start Scan" button to begin the vulnerability assessment.</li>
+                        <li class="mb-2">View the results and follow the remediation recommendations.</li>
+                    </ol>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Important:</strong> Only scan websites that you own or have explicit permission to test.
+                        Unauthorized scanning may be illegal in some jurisdictions.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scan Types Section -->
+            <div id="scan-types" class="card shadow-sm mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h3 class="h5 mb-0">Scan Types</h3>
+                </div>
+                <div class="card-body">
+                    <p>CyberWolf offers two types of vulnerability scans:</p>
+                    
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Basic Scan</h5>
+                            <p class="card-text">
+                                The Basic Scan performs standard checks for common vulnerabilities such as XSS, 
+                                SQL Injection, open ports, and vulnerable paths. This scan is suitable for most 
+                                routine security assessments.
+                            </p>
+                            <ul>
+                                <li>No API key required</li>
+                                <li>Detects common vulnerabilities</li>
+                                <li>Faster completion time</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">API Enhanced Scan</h5>
+                            <p class="card-text">
+                                The API Enhanced Scan leverages advanced security APIs to perform a more 
+                                thorough assessment. This scan type can detect a wider range of vulnerabilities 
+                                and provides more detailed information.
+                            </p>
+                            <ul>
+                                <li>Requires API key</li>
+                                <li>Deeper vulnerability detection</li>
+                                <li>More comprehensive results</li>
+                                <li>May take longer to complete</li>
+                            </ul>
+                            <a href="{{ url_for('api_keys') }}" class="btn btn-primary btn-sm mt-2">Generate API Key</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vulnerability Types Section -->
+            <div id="vulnerability-types" class="card shadow-sm mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h3 class="h5 mb-0">Vulnerability Types</h3>
+                </div>
+                <div class="card-body">
+                    <p>CyberWolf scans for the following types of vulnerabilities:</p>
+                    
+                    <div class="accordion" id="vulnerabilityAccordion">
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseXSS">
+                                    Cross-Site Scripting (XSS)
+                                </button>
+                            </h4>
+                            <div id="collapseXSS" class="accordion-collapse collapse show" data-bs-parent="#vulnerabilityAccordion">
+                                <div class="accordion-body">
+                                    <p>
+                                        Cross-Site Scripting vulnerabilities allow attackers to inject malicious scripts into web pages viewed 
+                                        by other users. These scripts can steal cookies, session tokens, or other sensitive information.
+                                    </p>
+                                    <h6>Common XSS Types:</h6>
+                                    <ul>
+                                        <li><strong>Reflected XSS:</strong> Malicious script is reflected off a web server, such as in search results or error messages.</li>
+                                        <li><strong>Stored XSS:</strong> Malicious script is stored on the target server, such as in a database, message forum, or comment field.</li>
+                                        <li><strong>DOM-based XSS:</strong> Vulnerability exists in client-side code rather than server-side code.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSQLi">
+                                    SQL Injection (SQLi)
+                                </button>
+                            </h4>
+                            <div id="collapseSQLi" class="accordion-collapse collapse" data-bs-parent="#vulnerabilityAccordion">
+                                <div class="accordion-body">
+                                    <p>
+                                        SQL Injection vulnerabilities allow attackers to interfere with database queries made by an application. 
+                                        Attackers can potentially view, modify, or delete database data, or execute administrative operations.
+                                    </p>
+                                    <h6>Common SQL Injection Types:</h6>
+                                    <ul>
+                                        <li><strong>Error-based:</strong> Forces the database to generate an error that reveals information about the database structure.</li>
+                                        <li><strong>Union-based:</strong> Uses UNION SQL operator to combine results from multiple SELECT statements.</li>
+                                        <li><strong>Boolean-based:</strong> Uses true/false questions to extract information from the database.</li>
+                                        <li><strong>Time-based:</strong> Uses time delays to determine if a condition is true or false.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePorts">
+                                    Open Ports and Services
+                                </button>
+                            </h4>
+                            <div id="collapsePorts" class="accordion-collapse collapse" data-bs-parent="#vulnerabilityAccordion">
+                                <div class="accordion-body">
+                                    <p>
+                                        Open ports on a server can potentially expose services that attackers can exploit. 
+                                        CyberWolf scans for open ports and identifies the services running on them.
+                                    </p>
+                                    <h6>Common Risks:</h6>
+                                    <ul>
+                                        <li><strong>Unnecessary Services:</strong> Services that are not required for the application to function but are still running.</li>
+                                        <li><strong>Outdated Services:</strong> Services with known vulnerabilities that have not been patched.</li>
+                                        <li><strong>Misconfigured Services:</strong> Services that are not properly secured, such as lacking authentication.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaths">
+                                    Vulnerable Paths and Directories
+                                </button>
+                            </h4>
+                            <div id="collapsePaths" class="accordion-collapse collapse" data-bs-parent="#vulnerabilityAccordion">
+                                <div class="accordion-body">
+                                    <p>
+                                        Vulnerable paths and directories can expose sensitive files or provide information about the 
+                                        web application's structure that attackers can use to exploit other vulnerabilities.
+                                    </p>
+                                    <h6>Common Issues:</h6>
+                                    <ul>
+                                        <li><strong>Directory Listing:</strong> Server configured to show the contents of directories.</li>
+                                        <li><strong>Sensitive Files:</strong> Configuration files, backup files, or source code files that are accessible.</li>
+                                        <li><strong>Default Directories:</strong> Default installation directories that contain sensitive information.</li>
+                                        <li><strong>Administrative Interfaces:</strong> Admin panels or interfaces that are not properly secured.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interpreting Results Section -->
+            <div id="interpreting-results" class="card shadow-sm mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h3 class="h5 mb-0">Interpreting Results</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        After a scan is completed, CyberWolf provides a comprehensive report of the vulnerabilities found.
+                        Here's how to interpret the results:
+                    </p>
+                    
+                    <div class="mb-4">
+                        <h6>Risk Levels:</h6>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-item-danger">
+                                <strong>High:</strong> Critical vulnerabilities that could lead to system compromise, 
+                                data theft, or significant service disruption. These should be addressed immediately.
+                            </li>
+                            <li class="list-group-item list-group-item-warning">
+                                <strong>Medium:</strong> Important vulnerabilities that pose a significant risk but may require 
+                                specific conditions to be exploited. These should be addressed in a timely manner.
+                            </li>
+                            <li class="list-group-item list-group-item-success">
+                                <strong>Low:</strong> Minor vulnerabilities that pose minimal risk on their own but could be 
+                                combined with other vulnerabilities to pose a greater threat. These should be addressed as part of routine maintenance.
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <p>
+                        The report also includes detailed information about each vulnerability, including location, 
+                        affected parameters, payloads used, and specific recommendations for remediation.
+                    </p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Tip:</strong> Always prioritize vulnerabilities based on risk level and the 
+                        sensitivity of the affected system or data.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- API Enhanced Scanning Section -->
+            <div id="api-scanning" class="card shadow-sm mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h3 class="h5 mb-0">API Enhanced Scanning</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        API Enhanced Scanning provides more comprehensive vulnerability detection by leveraging
+                        advanced security APIs. To use this feature, you'll need an API key.
+                    </p>
+                    
+                    <div class="mb-4">
+                        <h6>Benefits of API Enhanced Scanning:</h6>
+                        <ul>
+                            <li>Detection of more complex and subtle vulnerabilities</li>
+                            <li>Advanced payload testing for better accuracy</li>
+                            <li>Reduced false positives</li>
+                            <li>More detailed vulnerability information</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alert alert-primary">
+                        <h6 class="alert-heading">Obtaining an API Key</h6>
+                        <p class="mb-2">
+                            You can generate your own API key for enhanced scanning through the API Keys management page.
+                            API keys enable a deeper and more comprehensive vulnerability assessment of target websites.
+                        </p>
+                        <a href="{{ url_for('api_keys') }}" class="btn btn-primary btn-sm">Generate API Key</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CLI Usage Section -->
+            <div id="cli-usage" class="card shadow-sm mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h3 class="h5 mb-0">CLI Usage</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        CyberWolf also provides a command-line interface (CLI) for users who prefer 
+                        terminal-based operations or need to integrate vulnerability scanning into scripts or automation.
+                    </p>
+                    
+                    <div class="bg-dark text-light p-3 rounded mb-3">
+                        <pre><code>$ python cyberwolf.py --help</code></pre>
+                    </div>
+                    
+                    <h6>Basic Commands:</h6>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Command</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>python cyberwolf.py</code></td>
+                                    <td>Start the CyberWolf CLI with interactive menu</td>
+                                </tr>
+                                <tr>
+                                    <td><code>python cyberwolf.py --url [URL]</code></td>
+                                    <td>Scan the specified URL with basic scan</td>
+                                </tr>
+                                <tr>
+                                    <td><code>python cyberwolf.py --url [URL] --api-key [KEY]</code></td>
+                                    <td>Scan the specified URL with API enhanced scan</td>
+                                </tr>
+                                <tr>
+                                    <td><code>python cyberwolf.py --url [URL] --output [FILE]</code></td>
+                                    <td>Save scan results to specified file</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h6>Additional Options:</h6>
+                    <ul>
+                        <li><code>--timeout [SECONDS]</code> - Set request timeout</li>
+                        <li><code>--verbose</code> - Enable verbose output</li>
+                        <li><code>--no-ports</code> - Skip port scanning</li>
+                        <li><code>--no-paths</code> - Skip path scanning</li>
+                        <li><code>--no-xss</code> - Skip XSS scanning</li>
+                        <li><code>--no-sqli</code> - Skip SQL Injection scanning</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div id="faq" class="card shadow-sm mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h3 class="h5 mb-0">Frequently Asked Questions</h3>
+                </div>
+                <div class="card-body">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">
+                                    Is it legal to scan websites for vulnerabilities?
+                                </button>
+                            </h4>
+                            <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You should only scan websites that you own or have explicit permission to test. 
+                                    Unauthorized scanning may be illegal in some jurisdictions and could violate 
+                                    computer misuse laws. Always obtain proper authorization before scanning any website.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">
+                                    How long does a scan take to complete?
+                                </button>
+                            </h4>
+                            <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Scan duration depends on several factors, including the size of the website, 
+                                    the number of pages and forms to test, network latency, and the selected scan type. 
+                                    Basic scans typically complete in a few minutes, while API Enhanced scans may take longer 
+                                    due to the more thorough testing performed.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree">
+                                    Can CyberWolf scan websites behind authentication?
+                                </button>
+                            </h4>
+                            <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    The current version of CyberWolf scans publicly accessible pages and does not support 
+                                    authenticated scanning. Future versions may include support for authenticated scanning with 
+                                    session handling capabilities.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour">
+                                    Are the scans performed by CyberWolf comprehensive?
+                                </button>
+                            </h4>
+                            <div id="faqFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    CyberWolf focuses on common web vulnerabilities such as XSS, SQL Injection, open ports, 
+                                    and vulnerable paths. While the scanner is effective at identifying these issues, 
+                                    a comprehensive security assessment should also include manual testing, code reviews, 
+                                    and other specialized security tests. CyberWolf is a valuable tool in your security 
+                                    toolkit, but should not be the only one used.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h4 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive">
+                                    What should I do if I find vulnerabilities?
+                                </button>
+                            </h4>
+                            <div id="faqFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    If vulnerabilities are found in your own website, follow the remediation recommendations 
+                                    provided in the scan report. If you discover vulnerabilities in a third-party website 
+                                    (that you had permission to scan), responsibly disclose the issues to the website owner 
+                                    or their security team. Many organizations have a responsible disclosure policy or bug 
+                                    bounty program that outlines the process for reporting security issues.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

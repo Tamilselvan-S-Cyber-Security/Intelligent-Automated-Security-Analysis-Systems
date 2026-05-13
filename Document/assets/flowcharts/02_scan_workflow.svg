@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <style>
+      .box{fill:#fff;stroke:#111827;stroke-width:2;rx:12;}
+      .decision{fill:#fff;stroke:#111827;stroke-width:2;}
+      .t{font:700 22px Arial, sans-serif;fill:#111827;}
+      .s{font:16px Arial, sans-serif;fill:#111827;}
+      .small{font:14px Arial, sans-serif;fill:#374151;}
+      .a{stroke:#111827;stroke-width:2;fill:none;marker-end:url(#m);} 
+    </style>
+    <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#111827" />
+    </marker>
+  </defs>
+
+  <text x="40" y="50" class="t">CyberWolfScanner - Scan Workflow</text>
+
+  <rect x="70" y="100" width="260" height="70" class="box"/>
+  <text x="95" y="143" class="s">Start / User Input</text>
+
+  <rect x="70" y="210" width="260" height="70" class="box"/>
+  <text x="95" y="253" class="s">Validate URL</text>
+
+  <polygon points="200,320 300,380 200,440 100,380" class="decision"/>
+  <text x="155" y="385" class="s">Valid?</text>
+
+  <rect x="70" y="500" width="260" height="70" class="box"/>
+  <text x="95" y="543" class="s">Reject + Message</text>
+
+  <rect x="430" y="210" width="320" height="70" class="box"/>
+  <text x="455" y="253" class="s">Select Scan Options</text>
+
+  <rect x="430" y="320" width="320" height="70" class="box"/>
+  <text x="455" y="363" class="s">Run Scans Concurrently</text>
+  <text x="455" y="388" class="small">ThreadPoolExecutor</text>
+
+  <rect x="430" y="430" width="320" height="70" class="box"/>
+  <text x="455" y="473" class="s">Aggregate Results</text>
+
+  <rect x="430" y="540" width="320" height="70" class="box"/>
+  <text x="455" y="583" class="s">Compute Risk Summary</text>
+
+  <rect x="830" y="430" width="300" height="70" class="box"/>
+  <text x="855" y="473" class="s">Generate Report</text>
+
+  <rect x="830" y="540" width="300" height="70" class="box"/>
+  <text x="855" y="583" class="s">Display / Export</text>
+
+  <path d="M200 170 L200 210" class="a"/>
+  <path d="M200 280 L200 320" class="a"/>
+  <path d="M300 380 L430 245" class="a"/>
+  <path d="M200 440 L200 500" class="a"/>
+  <path d="M590 280 L590 320" class="a"/>
+  <path d="M590 390 L590 430" class="a"/>
+  <path d="M590 500 L590 540" class="a"/>
+  <path d="M750 465 L830 465" class="a"/>
+  <path d="M980 500 L980 540" class="a"/>
+
+  <text x="325" y="340" class="small">Yes</text>
+  <text x="210" y="480" class="small">No</text>
+</svg>

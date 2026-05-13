@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Future Roadmap - CyberWolf Scanner{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">CyberWolf Future Roadmap</h1>
+    <p class="lead">Our vision for the future of CyberWolf includes several exciting enhancements and new features.</p>
+    
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h5 mb-0">Short-Term Goals (Next 3 Months)</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Feature</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Advanced PDF Reports</td>
+                            <td>Enhanced PDF reports with visualizations and detailed vulnerability information</td>
+                            <td><span class="badge bg-info">In Progress</span></td>
+                        </tr>
+                        <tr>
+                            <td>Machine Learning-Based Detection</td>
+                            <td>Implement ML models to improve vulnerability detection accuracy and reduce false positives</td>
+                            <td><span class="badge bg-warning">Planned</span></td>
+                        </tr>
+                        <tr>
+                            <td>Expanded Security Misconfiguration Scanning</td>
+                            <td>Additional checks for security misconfigurations including cloud configurations and common frameworks</td>
+                            <td><span class="badge bg-info">In Progress</span></td>
+                        </tr>
+                        <tr>
+                            <td>API Rate Limiting and Usage Analytics</td>
+                            <td>Improved API key management with rate limiting, usage tracking, and analytics dashboard</td>
+                            <td><span class="badge bg-warning">Planned</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h2 class="h5 mb-0">Medium-Term Goals (4-8 Months)</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Feature</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Continuous Monitoring</td>
+                            <td>Scheduled scanning and continuous monitoring of target URLs with alert notifications</td>
+                            <td><span class="badge bg-secondary">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <td>Interactive Vulnerability Visualization</td>
+                            <td>Interactive charts and graphs to visualize scan results and track security improvements over time</td>
+                            <td><span class="badge bg-secondary">Upcoming</span></td>
+                        </tr>
+                        <tr>
+                            <td>Advanced Authentication Support</td>
+                            <td>Enhanced scanning of authentication-protected areas with support for various auth methods</td>
+                            <td><span class="badge bg-warning">Planned</span></td>
+                        </tr>
+                        <tr>
+                            <td>CI/CD Integration</td>
+                            <td>Seamless integration with CI/CD pipelines for automated security testing</td>
+                            <td><span class="badge bg-secondary">Upcoming</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-header bg-danger text-white">
+            <h2 class="h5 mb-0">Long-Term Vision (9+ Months)</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Feature</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Advanced AI Vulnerability Research</td>
+                            <td>Using AI to discover new vulnerability types and automatically develop detection techniques</td>
+                            <td><span class="badge bg-secondary">Concept</span></td>
+                        </tr>
+                        <tr>
+                            <td>Automated Remediation</td>
+                            <td>Suggesting and implementing automated fixes for detected vulnerabilities</td>
+                            <td><span class="badge bg-secondary">Concept</span></td>
+                        </tr>
+                        <tr>
+                            <td>Enterprise Security Dashboard</td>
+                            <td>Comprehensive security dashboard for enterprise-wide vulnerability management</td>
+                            <td><span class="badge bg-secondary">Concept</span></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile App Vulnerability Scanner</td>
+                            <td>Extend CyberWolf capabilities to scan mobile applications for vulnerabilities</td>
+                            <td><span class="badge bg-secondary">Concept</span></td>
+                        </tr>
+                        <tr>
+                            <td>Comprehensive Supply Chain Security</td>
+                            <td>Scan entire software supply chains for vulnerabilities and security issues</td>
+                            <td><span class="badge bg-secondary">Concept</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <h3>Suggest New Features</h3>
+        <p>We value community input! If you have ideas for new features or enhancements, please share them with us.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="mailto:contact@cyberwolf-team.com" class="btn btn-primary">
+                <i class="fas fa-envelope me-2"></i> Email Us
+            </a>
+            <a href="https://github.com/cyberwolf-team/cyberwolf-scanner/issues" class="btn btn-outline-secondary">
+                <i class="fab fa-github me-2"></i> Submit on GitHub
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

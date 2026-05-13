@@ -1,0 +1,529 @@
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    color: #f9f9f9;
+}
+
+/* Section headers */
+.glass-section-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 15px 0 10px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 75, 75, 0.3);
+    color: #FF4B4B;
+}
+
+/* Helper text */
+.helper-text {
+    font-size: 0.9rem;
+    margin: 10px 0;
+    opacity: 0.8;
+}
+
+/* Glass Effect Containers */
+.glass-container, .glass-header, .glass-sidebar-header, .glass-sidebar-footer, .glass-footer {
+    background: rgba(25, 28, 36, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Header Styling */
+.glass-header {
+    text-align: center;
+    padding: 24px;
+    margin-bottom: 30px;
+}
+
+.glass-header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #FF4B4B, #FF9D9D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 75, 75, 0.3);
+}
+
+/* Sidebar Styling */
+.glass-sidebar-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: rgba(38, 39, 48, 0.8);
+}
+
+.glass-sidebar-footer {
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    opacity: 0.7;
+}
+
+/* Main Content Area */
+.main-content {
+    padding: 30px;
+    min-height: 500px;
+}
+
+/* Results Styling */
+.result-header {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FF4B4B;
+}
+
+.section-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+    color: #FF9D9D;
+}
+
+/* Security Score Styling */
+.score-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.score-label {
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+
+.score-value {
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #FF4B4B, #FF9D9D);
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Info Box Styling */
+.info-box {
+    background: rgba(38, 39, 48, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 4px solid #FF4B4B;
+}
+
+.info-box h3 {
+    margin-top: 0;
+    color: #FF9D9D;
+}
+
+.info-box ul {
+    padding-left: 20px;
+}
+
+/* Threat Summary Styling */
+.threat-summary, .vuln-summary {
+    background: rgba(38, 39, 48, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Vulnerability Severity Headers */
+.severity-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 15px 0 10px 0;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.severity-critical {
+    background: rgba(220, 53, 69, 0.3);
+    border-left: 4px solid #dc3545;
+    color: #ff6b6b;
+}
+
+.severity-high {
+    background: rgba(253, 126, 20, 0.3);
+    border-left: 4px solid #fd7e14;
+    color: #ffae42;
+}
+
+.severity-medium {
+    background: rgba(255, 193, 7, 0.3);
+    border-left: 4px solid #ffc107;
+    color: #ffd700;
+}
+
+.severity-low {
+    background: rgba(23, 162, 184, 0.3);
+    border-left: 4px solid #17a2b8;
+    color: #5bc0de;
+}
+
+.severity-info {
+    background: rgba(13, 110, 253, 0.3);
+    border-left: 4px solid #0d6efd;
+    color: #48b0f7;
+}
+
+/* Solution Header */
+.solution-header {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+    color: #FF9D9D;
+}
+
+/* Attack Simulation Specific Styles */
+.attack-warning {
+    background-color: rgba(255, 193, 7, 0.2);
+    border-left: 4px solid #ffc107;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.attack-evidence {
+    background-color: rgba(38, 39, 48, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.effectiveness-high {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.effectiveness-medium {
+    color: #FFC107;
+    font-weight: bold;
+}
+
+.effectiveness-low {
+    color: #F44336;
+    font-weight: bold;
+}
+
+.attack-simulation {
+    background-color: rgba(255, 82, 82, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 82, 82, 0.3);
+}
+
+/* Advanced Features Styling */
+.feature-header {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(75, 192, 192, 0.5);
+    color: rgb(75, 192, 192);
+    background: linear-gradient(90deg, rgba(75, 192, 192, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.section-subheader {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+    padding: 8px 0;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+    color: #ffbd45;
+}
+
+.report-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 10px 0 5px 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+.report-subtitle {
+    font-size: 0.9rem;
+    margin: 0 0 20px 0;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+/* Footer Styling */
+.glass-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* Button Enhancements */
+.stButton > button {
+    transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Tab Styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background-color: rgba(38, 39, 48, 0.6);
+    border-radius: 4px 4px 0 0;
+    padding: 10px 16px;
+    border: none;
+}
+
+.stTabs [aria-selected="true"] {
+    background-color: rgba(255, 75, 75, 0.2);
+    border-bottom: 2px solid #FF4B4B;
+}
+
+/* Expander Styling */
+.streamlit-expanderHeader {
+    font-weight: 600;
+    background-color: rgba(38, 39, 48, 0.6);
+    border-radius: 4px;
+}
+
+/* Code Block Styling */
+pre {
+    background-color: rgba(25, 28, 36, 0.9);
+    border-radius: 8px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Cybersecurity Tips Carousel */
+.cyber-tip-carousel {
+    background: rgba(25, 28, 36, 0.8);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.tip-container {
+    position: relative;
+    height: auto;
+    min-height: 150px;
+    overflow: hidden;
+}
+
+.tip-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    height: 100%;
+    padding: 15px;
+    background: rgba(38, 39, 48, 0.6);
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    transition: all 0.5s ease-out;
+    transform: translateX(100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tip-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.tip-slide.tip-beginner {
+    border-left-color: #4CAF50;
+}
+
+.tip-slide.tip-intermediate {
+    border-left-color: #2196F3;
+}
+
+.tip-slide.tip-advanced {
+    border-left-color: #FF9800;
+}
+
+.tip-slide.tip-expert {
+    border-left-color: #F44336;
+}
+
+.tip-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.tip-content {
+    font-size: 1rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.tip-icon {
+    font-size: 1.5rem;
+    text-align: right;
+    margin-top: 8px;
+}
+
+.tip-beginner .tip-title::before {
+    content: "🔰 ";
+}
+
+.tip-intermediate .tip-title::before {
+    content: "🛡️ ";
+}
+
+.tip-advanced .tip-title::before {
+    content: "⚔️ ";
+}
+
+.tip-expert .tip-title::before {
+    content: "🔒 ";
+}
+
+.tip-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.tip-control-button {
+    background: rgba(255, 75, 75, 0.2);
+    border: 1px solid rgba(255, 75, 75, 0.3);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tip-control-button:hover {
+    background: rgba(255, 75, 75, 0.3);
+    border-color: rgba(255, 75, 75, 0.4);
+}
+
+.tip-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.tip-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tip-indicator.active {
+    background: rgba(255, 75, 75, 0.8);
+    transform: scale(1.2);
+}
+
+/* Slide-in Animation */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .glass-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+    
+    .glass-container, .glass-header, .glass-sidebar-header, .glass-sidebar-footer, .glass-footer {
+        padding: 15px;
+    }
+    
+    .score-container {
+        flex-direction: column;
+    }
+    
+    .score-label {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .tip-container {
+        height: 200px;
+    }
+}
