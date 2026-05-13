@@ -236,6 +236,17 @@ import secrets
 import string
 from datetime import datetime, timedelta
 from colorama import init, Fore, Style
+
+# Check if running under Streamlit
+try:
+    import streamlit as st
+    if st.runtime.exists():
+        # If running in Streamlit, redirect to the main wolf app
+        import wolf
+        st.stop()
+except ImportError:
+    pass
+
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
 
