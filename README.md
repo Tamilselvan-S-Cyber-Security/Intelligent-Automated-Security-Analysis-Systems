@@ -2,7 +2,7 @@
 
 An Intelligent Automated Security Analysis System for Applications, Websites, and Files - A comprehensive Python-based CLI & GUI cybersecurity tool for automated vulnerability scanning and reporting.
 
-**Developed by:** Security Team - SKP Engineering College, CSE 4th Year | Final Year Project
+**Developed by:** Security Team 
 
 ## Features
 
@@ -23,10 +23,5 @@ An Intelligent Automated Security Analysis System for Applications, Websites, an
   - colorama
   - python-nmap (optional, for enhanced port scanning)
 
-## Installation
 
-1. Clone this repository:
-   ```
-   git clone https://github.com/cyberwolf-team/cyberwolf.git
-   cd cyberwolf
    
